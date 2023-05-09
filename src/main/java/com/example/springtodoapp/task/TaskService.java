@@ -1,14 +1,19 @@
 package com.example.springtodoapp.task;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class TaskService {
-  public List<Task> findAll() {
-    return List.of(
-        new Task(null, "Task 1"),
-        new Task(null, "Task 2"));
+  private TaskRepository taskRepository;
+
+  public Iterable<Task> findAll() {
+    return taskRepository.findAll();
+  }
+
+  public void register(Task task) {
+    taskRepository.save(task);
   }
 }
