@@ -10,7 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class TaskController {
   @GetMapping("/")
   public String index(Model model) {
-    model.addAttribute("task", new ArrayList<>());
+    var tasks = new ArrayList<Task>();
+    tasks.add(new Task(null, "Task 1"));
+    tasks.add(new Task(null, "Task 2"));
+
+    model.addAttribute("tasks", tasks);
     return "index";
   }
 }
